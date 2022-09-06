@@ -1,0 +1,122 @@
+<ion-header [translucent]="true">
+	<ion-toolbar>
+		<img class="logomini" slot="start" src="/assets/logomini.png">
+		<ion-title class="blue-dark-c">
+			Vehículos
+		</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="logout()" color="danger">
+				<ion-icon slot="icon-only" name="exit"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true">
+
+
+
+	<div class="box-btn">
+
+		<ion-button
+			color="success"
+			shape="round"
+			class="btn-add"
+			(click)="descargarReporte()">
+			Descargar reporte
+		</ion-button>
+
+	</div>
+
+	
+
+	<!-- Refresher -->
+	<ion-refresher slot="fixed" (ionRefresh)="recargar( $event )">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+
+	
+	<ion-header collapse="condense">
+		<ion-toolbar>
+			<ion-title size="large">Vehículos</ion-title>
+		</ion-toolbar>
+	</ion-header>
+
+
+	<ion-list>
+		
+		<ion-item *ngFor="let vehiculo of vehiculos; let i = index" [routerLink]="[ './vehiculo', vehiculo.patente ]">
+			
+			<div class="badge badge-number" slot="start">
+				{{ i + 1 }}
+			</div>
+
+			<div class="badge badge-patente">
+				{{ vehiculo.patente }}
+			</div>
+			
+			<div class="badge badge-conductor" slot="end">
+				{{ vehiculo.nombreConductor }} {{ vehiculo.apellidoConductor }}
+			</div>
+
+		</ion-item>
+
+	</ion-list>
+
+
+	<!-- Infinite Scroll -->
+	<ion-infinite-scroll
+		[disabled]="!habilitado"
+		threshold="150px"
+		(ionInfinite)="siguientes($event)">
+		<ion-infinite-scroll-content>
+		</ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+	
+
+
+	<table class="hidden" *ngIf="vehiculos.length > 0" id="excel-table">
+		<tr>
+			<th>Patente				 </th>
+			<th>Marca				 </th>
+			<th>Modelo				 </th>
+			<th>Año					 </th>
+			<th>Color				 </th>
+			<th>N° de GPS			 </th>
+			<th>N° de Motor			 </th>
+			<th>N° de VIN			 </th>
+			<th>Sistema de rastreo	 </th>
+			<th>Fecha de vencimiento </th>
+			<th>Apagado de Motor	 </th>
+			<th>Inmovilizador        </th>
+			<th>Nombre conductor	 </th>
+			<th>Apellido conductor	 </th>
+			<th>Rut conductor		 </th>
+			<th>Celular conductor	 </th>
+		</tr>
+		<tr *ngFor="let vehiculo of vehiculos; let i = index">
+			<td> {{ vehiculo.patente 		   }} </td>
+			<td> {{ vehiculo.marca 			   }} </td>
+			<td> {{ vehiculo.modelo 		   }} </td>
+			<td> {{ vehiculo.anio 			   }} </td>
+			<td> {{ vehiculo.color 			   }} </td>
+			<td> {{ vehiculo.gps 			   }} </td>
+			<td> {{ vehiculo.numeroMotor 	   }} </td>
+			<td> {{ vehiculo.numeroVin 		   }} </td>
+			<td> {{ vehiculo.sistemaRastreo    }} </td>
+			<td> {{ vehiculo.fechaVencimiento  }} </td>
+			<td> {{ vehiculo.apagadoMotor      }} </td>
+			<td> {{ vehiculo.inmovilizador     }} </td>
+			<td> {{ vehiculo.nombreConductor   }} </td>
+			<td> {{ vehiculo.apellidoConductor }} </td>
+			<td> {{ vehiculo.rutConductor 	   }} </td>
+			<td> {{ vehiculo.movilConductor    }} </td>
+		</tr>
+		
+	</table>
+
+	
+
+</ion-content>

@@ -1,0 +1,43 @@
+<ion-content>
+
+	<form (ngSubmit)="login( fLogin )" #fLogin="ngForm" class="form-login">
+					
+		<ion-grid>
+
+			<ion-row>
+				<ion-col class="center">
+					<img class="logo" src="/assets/logo-texto.png">
+				</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col>
+				
+					<ion-list>
+					
+						<ion-item>
+							<ion-label position="floating">Correo</ion-label>
+							<ion-input [(ngModel)]="loginUser.email" name="email" type="email" required></ion-input>
+						</ion-item>
+
+						<ion-item>
+							<ion-label position="floating">Contraseña</ion-label>
+							<ion-input [(ngModel)]="loginUser.password" name="password" type="password" required></ion-input>
+						</ion-item>
+
+						<ion-button
+							class="btn-login"
+							expand="block"
+							(click)="login( fLogin )">
+							Ingresar
+						</ion-button>
+
+					</ion-list>
+				</ion-col>
+			</ion-row>
+
+		</ion-grid>
+	
+	</form>
+
+</ion-content>

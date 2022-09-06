@@ -1,0 +1,134 @@
+<ion-header>
+  	
+	<ion-toolbar>
+		
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+
+    	<ion-title class="blue-dark-c">
+			Vehículo
+		</ion-title>
+
+		<ion-buttons slot="end">
+			<ion-button (click)="logout()" color="danger">
+				<ion-icon slot="icon-only" name="exit"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+
+  	</ion-toolbar>
+
+</ion-header>
+
+
+
+<ion-content>
+
+	
+	<ion-card class="card-vehiculo">
+
+
+		<div class="box-tabla" *ngIf="vehiculo">
+
+
+			<ion-buttons slot="end">
+				<ion-button (click)="eliminarVehiculo( vehiculo.patente )" color="danger">
+					<ion-icon name="trash-outline"></ion-icon>
+				</ion-button>
+			</ion-buttons>
+
+
+			<div>
+
+				<table>
+					<tbody>
+						<tr>
+							<td><ion-icon name="car-outline" slot="start"></ion-icon></td>
+							<td>Patente</td>
+							<td> {{ vehiculo.patente }} </td>
+						</tr>
+						<tr>
+							<td><ion-icon name="bookmark-outline" slot="start"></ion-icon></td>
+							<td>Marca</td>
+							<td> {{ vehiculo.marca }} </td>
+						</tr>
+						<tr>
+							<td><ion-icon name="bookmarks-outline" slot="start"></ion-icon></td>
+							<td>Modelo</td>
+							<td> {{ vehiculo.modelo }} </td>
+						</tr>
+						<tr>
+							<td><ion-icon name="calendar-outline" slot="start"></ion-icon></td>
+							<td>Año</td>
+							<td> {{ vehiculo.anio }} </td>
+						</tr>
+						<tr>
+							<td><ion-icon name="color-palette-outline" slot="start"></ion-icon></td>
+							<td>Color</td>
+							<td> {{ vehiculo.color }} </td>
+						</tr>
+						<tr>
+							<td><ion-icon name="location-outline" slot="start"></ion-icon></td>
+							<td>N° de GPS</td>
+							<td> {{ vehiculo.gps }} </td>
+						</tr>
+						<tr>
+							<td><ion-icon name="settings-outline" slot="start"></ion-icon></td>
+							<td>N° de Motor</td>
+							<td> {{ vehiculo.numeroMotor }} </td>
+						</tr>
+						<tr>
+							<td><ion-icon name="finger-print-outline" slot="start"></ion-icon></td>
+							<td>N° de Vin</td>
+							<td> {{ vehiculo.numeroVin }} </td>
+						</tr>
+						<tr>
+							<td><ion-icon name="desktop-outline" slot="start"></ion-icon></td>
+							<td>Sistema de rastreo</td>
+							<td *ngIf="vehiculo.sistemaRastreo"> Si </td>
+							<td *ngIf="!vehiculo.sistemaRastreo"> No </td>
+						</tr>
+						<tr>
+							<td><ion-icon name="calendar-number-outline" slot="start"></ion-icon></td>
+							<td>Vencimiento</td>
+							<td> {{ vehiculo.fechaVencimiento | date: 'short' }} </td>
+						</tr>
+						<tr>
+							<td><ion-icon name="power-outline" slot="start"></ion-icon></td>
+							<td>Apagado de Motor</td>
+							<td *ngIf="vehiculo.apagadoMotor"> Si </td>
+							<td *ngIf="!vehiculo.apagadoMotor"> No </td>
+						</tr>
+						<tr>
+							<td><ion-icon name="stop-circle-outline" slot="start"></ion-icon></td>
+							<td>Inmovilizador</td>
+							<td *ngIf="vehiculo.inmovilizador"> Si </td>
+							<td *ngIf="!vehiculo.inmovilizador"> No </td>
+						</tr>
+						<tr>
+							<td><ion-icon name="person-outline" slot="start"></ion-icon></td>
+							<td>Conductor</td>
+							<td>{{ vehiculo.nombreConductor }} {{ vehiculo.apellidoConductor }}</td>
+						</tr>	
+						<tr>
+							<td><ion-icon name="id-card-outline" slot="start"></ion-icon></td>
+							<td>Rut</td>
+							<td> {{ vehiculo.rutConductor }} </td>
+						</tr>
+						<tr>
+							<td><ion-icon name="phone-portrait-outline" slot="start"></ion-icon></td>
+							<td>N° celular</td>
+							<td> {{ vehiculo.movilConductor }} </td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+
+		</div>	
+
+
+	</ion-card>
+
+
+</ion-content>

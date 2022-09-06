@@ -1,0 +1,175 @@
+<ion-header [translucent]="true">
+	<ion-toolbar>
+		<img class="logomini" slot="start" src="/assets/logomini.png">
+		<ion-title class="blue-dark-c">
+			Agregar
+		</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="logout()" color="danger">
+				<ion-icon slot="icon-only" name="exit"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+
+
+<ion-content padding>
+	
+	<ion-header collapse="condense">
+		<ion-toolbar>
+			<ion-title size="large">Agregar</ion-title>
+		</ion-toolbar>
+	</ion-header>
+
+
+	<ion-card>
+
+		<form action="">
+
+			<ion-item>
+				<ion-label position="floating">Patente</ion-label>
+				<ion-input name="patente" #patente [(ngModel)]="vehiculo.patente"></ion-input>
+			</ion-item>
+	
+			<ion-item>
+				<ion-label position="floating">Marca</ion-label>
+				<ion-input name="marca" #marca [(ngModel)]="vehiculo.marca"></ion-input>
+			</ion-item>
+	
+			<ion-item>
+				<ion-label position="floating">Modelo</ion-label>
+				<ion-input name="modelo" #modelo [(ngModel)]="vehiculo.modelo"></ion-input>
+			</ion-item>
+	
+			<ion-item>
+				<ion-label position="floating">Año</ion-label>					
+				<ion-select [(ngModel)]="vehiculo.anio" name="anio" placeholder="Selecciona un año">
+					<ion-select-option value="2000">2000</ion-select-option>
+					<ion-select-option value="2001">2001</ion-select-option>
+					<ion-select-option value="2002">2002</ion-select-option>
+					<ion-select-option value="2003">2003</ion-select-option>
+					<ion-select-option value="2004">2004</ion-select-option>
+					<ion-select-option value="2005">2005</ion-select-option>
+					<ion-select-option value="2006">2006</ion-select-option>
+					<ion-select-option value="2007">2007</ion-select-option>
+					<ion-select-option value="2008">2008</ion-select-option>
+					<ion-select-option value="2009">2009</ion-select-option>
+					<ion-select-option value="2010">2010</ion-select-option>
+					<ion-select-option value="2011">2011</ion-select-option>
+					<ion-select-option value="2012">2012</ion-select-option>
+					<ion-select-option value="2013">2013</ion-select-option>
+					<ion-select-option value="2014">2014</ion-select-option>
+					<ion-select-option value="2015">2015</ion-select-option>
+					<ion-select-option value="2016">2016</ion-select-option>
+					<ion-select-option value="2017">2017</ion-select-option>
+					<ion-select-option value="2018">2018</ion-select-option>
+					<ion-select-option value="2019">2019</ion-select-option>
+					<ion-select-option value="2020">2020</ion-select-option>
+					<ion-select-option value="2021">2021</ion-select-option>
+					<ion-select-option value="2022">2022</ion-select-option>
+					<ion-select-option value="2023">2023</ion-select-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">Color</ion-label>
+				<ion-input name="color" #color [(ngModel)]="vehiculo.color"></ion-input>
+			</ion-item>
+	
+			<ion-item>
+				<ion-label position="floating">N° GPS</ion-label>
+				<ion-input name="gps" #gps [(ngModel)]="vehiculo.gps"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">N° de Motor</ion-label>
+				<ion-input name="numeroMotor" #numeroMotor [(ngModel)]="vehiculo.numeroMotor"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">N° de VIN</ion-label>
+				<ion-input name="numeroVin" #numeroVin [(ngModel)]="vehiculo.numeroVin"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">Sistema de rastreo</ion-label>					
+				<ion-select [(ngModel)]="vehiculo.sistemaRastreo" name="sistemaRastreo" placeholder="Selecciona una opción">
+					<ion-select-option value="si">Si</ion-select-option>
+					<ion-select-option value="no">No</ion-select-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item>
+				<ion-label>Vencimiento</ion-label>
+				<ion-input
+				  	value="{{ vehiculo.fechaVencimiento | date: 'dd.MM.yyyy' }}"
+				  	id="date"
+				  	class="ion-text-end">
+				</ion-input>
+				<ion-popover trigger="date" size="cover">
+			
+					<ng-template>
+						<ion-datetime
+					 		presentation="date"
+					  		[(ngModel)]="vehiculo.fechaVencimiento"
+					  		name="fechaVencimiento"
+					  		locale="es-ES"
+							[firstDayOfWeek]="1">
+						</ion-datetime>
+				  	</ng-template>
+			
+				</ion-popover>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">Apagado de motor</ion-label>					
+				<ion-select [(ngModel)]="vehiculo.apagadoMotor" name="apagadoMotor" placeholder="Selecciona una opción">
+					<ion-select-option value="si">Si</ion-select-option>
+					<ion-select-option value="no">No</ion-select-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">Inmovilizador</ion-label>					
+				<ion-select [(ngModel)]="vehiculo.inmovilizador" name="inmovilizador" placeholder="Selecciona una opción">
+					<ion-select-option value="si">Si</ion-select-option>
+					<ion-select-option value="no">No</ion-select-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">Nombre del conductor</ion-label>
+				<ion-input name="nombreConductor" #nombreConductor [(ngModel)]="vehiculo.nombreConductor"></ion-input>
+			</ion-item>
+	
+			<ion-item>
+				<ion-label position="floating">Apellido del conductor</ion-label>
+				<ion-input name="apellidoConductor" #apellidoConductor [(ngModel)]="vehiculo.apellidoConductor"></ion-input>
+			</ion-item>
+	
+			<ion-item>
+				<ion-label position="floating">Rut del conductor</ion-label>
+				<ion-input name="rutConductor" #rutConductor [(ngModel)]="vehiculo.rutConductor"></ion-input>
+			</ion-item>
+	
+			<ion-item>
+				<ion-label position="floating">N° de celular del conductor</ion-label>
+				<ion-input name="movilConductor" #movilConductor [(ngModel)]="vehiculo.movilConductor"></ion-input>
+			</ion-item>
+	
+			<ion-button
+				class="btn-add"
+				expand="block"
+				(click)="crearVehiculo()"
+				[disabled]="vehiculo.patente.length < 6">
+				Agregar vehículo
+			</ion-button>
+
+		</form>
+
+	</ion-card>
+
+
+
+</ion-content>
